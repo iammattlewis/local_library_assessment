@@ -3,12 +3,19 @@ function findAuthorById(authors, id) {
   return foundAuth;
 }
 
+/*
+// Old function without helper //
 function findBookById(books, id) {
   let foundBook = books.find((book) => book.id === id);
   return foundBook;
 }
+*/
 
-
+// New function using helper //
+function findBookById(books, id) {
+  //use the findElementById helper function I wrote
+  return findElementById(books, id);
+}
 
  function partitionBooksByBorrowedStatus(books) {
   let returnedBooks = books.filter((book) =>
@@ -29,6 +36,11 @@ function getBorrowersForBook(book, accounts) {
     return {...borrow, ...account};
   })
   .slice(0,10);
+}
+
+// Helper function //
+function findElementById(elements, id) {
+  return elements.find((element) => element.id === id);
 }
 
 module.exports = {
