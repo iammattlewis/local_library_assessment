@@ -10,6 +10,8 @@ function sortAccountsByLastName(accounts) {
   return accounts;
 }
 
+/* 
+// Old function not using reduce method //
 function getTotalNumberOfBorrows(account, books) {
   let totalBorrowed = 0;
   for (let i=0; i < books.length; i++) {
@@ -20,6 +22,15 @@ function getTotalNumberOfBorrows(account, books) {
     }
   }
   return totalBorrowed;
+}
+*/
+// New function using reduce method //
+function getTotalNumberOfBorrows(account, books) {
+  const accountId = account.id;
+  return books.reduce((totalBorrowed, { borrows }) => {
+    if (borrows.some((record) => record.id === accountId)) totalBorrowed++;
+    return totalBorrowed;
+  }, 0);
 }
 
 function getBooksPossessedByAccount(account, books, authors) {
